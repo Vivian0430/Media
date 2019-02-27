@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>管理登陆页面</title>
+    <link rel="stylesheet" href="./css/adminLogin.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+  </head>
+
+  <body
+    style="background:url('./images/myLogin.jpg') no-repeat;background-size: cover"
+  >
+    <form class="from_box">
+      <div class="form-group">
+        <label for="exampleInputEmail1">管理员名称</label>
+        <input
+          type="text"
+          class="form-control"
+          id="account"
+          placeholder="ID"
+          value=""
+        />
+      </div>
+      <div id="noSuper" style="display:none" class="alert alert-danger" role="alert">管理员中没有您！</div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">管理员密码</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="PassWord"
+          value=""
+        />
+      </div>
+      <div id="error" style="display:none" class="alert alert-danger" role="alert">密码错误</div>
+    
+      
+      <div class="form-group">
+        <button type="button" id="loginBtn" class="btn btn-default btn-success">
+          Sign in
+        </button>
+      </div>
+    </form>
+  </body>
+  <script>
+    jQuery(document).ready(function($) {
+      $("#loginBtn").click(function() {
+        var account = $("#account").val();
+        window.sessionStorage.setItem("superName", account);
+        var password =$("#password").val();
+        $.post("/findSuper", { title: account}, function(result) {
+            console.log(result)
+          if (result.data.length == 0) {
+            $("#noSuper").css("display","block");
+          } else if(result.data[0].password != password) {
+            $("#noSuper").css("display","none");
+            $("#error").css("display","block");
+          }else{
+            $("#noSuper").css("display","none");
+            $("#error").css("display","none");
+            window.open("/admin02");
+          }
+        });
+      });
+    });
+  </script>
+</html>

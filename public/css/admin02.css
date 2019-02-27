@@ -1,0 +1,18 @@
+.btn-xs, .btn-group-xs>.btn {
+    padding: 6px 6px;
+    font-size: 12px;
+    line-height: 1.083;
+    border-radius: 3px;
+}
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    text-align: center;
+}
+.alert-danger {
+    color: #e74c3c;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    text-align: center;
+}

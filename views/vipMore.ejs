@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多媒体</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/more.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+<script src="//onreplaytv.com/wp-content/cache/wpfc-minified/b546511d62fa9218d13fc49c3dcc530a/1518645932index.js" type="text/javascript"></script>
+<![endif]-->
+    <!--[if lte IE 9]>
+<link rel="stylesheet" type="text/css" href="https://onreplaytv.com/wp-content/themes/onreplaytv/css/ie.css"/>
+<![endif]-->
+</head>
+
+<body>
+    <div class="media_header">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container-fluid">
+                <!-- 缩小以后变成图标 -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/" style="padding-left: 100px;">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="musicMore">视频</a></li>
+                            <li><a href="musicMore">音乐</a></li>
+                            <li class="active"><a href="more">图片</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="请输入查询内容">
+                        </div>
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </form>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="adminLogin">登陆</a></li>
+                        <li><a href="register">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- 内容 -->
+    <div class="media_content">
+        <div class="container">
+            <div class="smart-box-head">
+                <h2 class="light-title title" style="display:inline-block;margin-top: 60px;">VIP</h2>
+                <a class="btn btn-default pull-right" href="#" role="button" style="margin: 20px;">Move picture</a>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <% for(var i=0;i<data.length;i++){ %>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <a href="#" class="thumbnail" style="height:150px;">
+                        <img style="height:100%;" src=<%=data[i].imgSrc %> alt="...">
+                    </a>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="picture_play">
+            
+            <div class="picture_box">
+                <img id="imgShow" src="https://good.mynatapp.cc/picture/picture01.jpg" alt="">
+            </div>
+    </div>
+
+    <footer>
+        <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 footer-logo-container">
+                        <a class="footer-logo" href="/"><img src="https://confidentcustomer.com/img/site/logo-white.png" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <img src="https://confidentcustomer.com/img/site/captera.png" class="img-responsive center-block">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6">
+                <div class="row footer-list">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <ul class="list-inline access-links">
+                            <li><a href="javascript:void();">solution</a></li>
+                            <li><a href="javascript:void();">how it works</a></li>
+                            <li><a href="javascript:void();">features</a></li>
+                            <li><a href="javascript:void();">testimonials</a></li>
+                            <li><a href="javascript:void();">pricing</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <ul class="list-inline access-links">
+                            <li><a href="javascript:void(0);" onclick="window.open('https://apps.shopify.com/confidentcustomer');" class="page-scroll">shopify app</a></li>
+                            <li><a href="javascript:void();">yotpo alternative</a></li>
+                            <li><a href="javascript:void();">blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <ul class="list-inline access-links">
+    
+    
+                            <li><a href="javascript:void();">login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
+</body>
+<script>
+    var phone=window.sessionStorage.getItem("phone");
+    // console.log(phone);
+    if(phone){
+        $("#login").text("欢迎"+phone);
+        $("#register").css("display","none");
+    }
+
+    $(".thumbnail").click(function(){
+        console.log("kakak")
+        var imgSrc=$(this).data("picture");
+        console.log(imgSrc);
+       $("#imgShow").attr('src',imgSrc); 
+       $(".picture_play").css("display","block");
+
+    })
+
+    $(".picture_play").click(function(){
+        $(".picture_play").css("display","none");
+    })
+</script>
+</html>

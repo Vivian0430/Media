@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>管理登陆页面</title>
+    <link rel="stylesheet" href="./css/adminLogin.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+  </head>
+
+  <body
+    style="background:url('./images/register.jpg') no-repeat;background-size: cover"
+  >
+    <form class="from_box" method="POST" action="/sendUserInfo">
+      <div class="form-group">
+        <label for="phone">电话</label>
+        <input
+          type="tel"
+          name="title"
+          id="phone"
+          class="form-control"
+          required
+          placeholder="phone"
+          pattern="^(0|86|17951)?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}"
+          
+        />
+      </div>
+      <div id="error" style="display:none" class="alert alert-danger" role="alert">该用户已被注册</div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">密码</label>
+        <input
+          required
+          type="password"
+          class="form-control"
+          name="password"
+          placeholder="Password"
+          pattern="^[0-9a-zA-Z_]{6,8}$"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">邮箱</label>
+        <input
+          required
+          type="email"
+          name="email"
+          class="form-control"
+          name="email"
+          placeholder="email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">性别</label>
+        <input type="radio" required name="sex" value="男" />男
+        <input type="radio" required name="sex" value="女" />女
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-default btn-success">
+          register
+        </button>
+      </div>
+    </form>
+  </body>
+  <script>
+    $(document).ready(function() {
+      $("#phone").blur(function() {
+        var tel = $("#phone").val();
+        $.post("/checkUser", { title: tel }, function(result) {
+          console.log(result);
+          if (result.data.length == 0) {
+            $("#error").css("display","none");
+          } else {
+            $("#error").css("display","block");
+          }
+        });
+      });
+    });
+  </script>
+</html>

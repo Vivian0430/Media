@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>管理登陆页面</title>
+    <link rel="stylesheet" href="./css/adminLogin.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+  </head>
+
+  <body
+    style="background:url('./images/adminLogin.jpg') no-repeat;background-size: cover"
+  >
+    <form class="from_box">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Account</label>
+        <input
+          type="text"
+          class="form-control"
+          id="account"
+          placeholder="Account"
+          value="<%=fields.title%>"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+          value="<%=fields.password%>"
+        />
+      </div>
+      <div id="error" style="display:none" class="alert alert-danger" role="alert">密码错误</div>
+      
+      <div class="form-group">
+        <button type="button" id="loginBtn" class="btn btn-default btn-success">
+          Sign in
+        </button>
+      </div>
+    </form>
+  </body>
+  <script>
+    jQuery(document).ready(function($) {
+      $("#loginBtn").click(function() {
+        var account = $("#account").val();
+        console.log(account)
+        var password =$("#password").val();
+        console.log(password)
+        $.post("/findUser", { title: account}, function(result) {
+            console.log(result)
+          if (result.data.length == 0) {
+            window.open("/register","_self");
+          } else if(result.data[0].password != password) {
+            $("#error").css("display","block");
+          }else{
+            window.sessionStorage.setItem("phone", result.data[0].title);
+            window.open("/","_self");
+          }
+        });
+      });
+    });
+  </script>
+</html>

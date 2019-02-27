@@ -1,0 +1,1249 @@
+<!doctype html>
+<html lang="ch">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="左右结构项目，属于大人员的社交工具">
+        <meta name="keywords" content="左右结构项目 社交 占座 ">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>后台管理</title>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            $(function() {
+                $(".meun-item").click(function() {
+                    $(".meun-item").removeClass("meun-item-active");
+                    $(this).addClass("meun-item-active");
+                    var itmeObj = $(".meun-item").find("img");
+                    itmeObj.each(function() {
+                        var items = $(this).attr("src");
+                        items = items.replace("_grey.png", ".png");
+                        items = items.replace(".png", "_grey.png")
+                        $(this).attr("src", items);
+                    });
+                    var attrObj = $(this).find("img").attr("src");
+                    ;
+                    
+                    $(this).find("img").attr("src", attrObj);
+                });
+                $("#topAD").click(function() {
+                    $("#topA").toggleClass(" glyphicon-triangle-right");
+                    $("#topA").toggleClass(" glyphicon-triangle-bottom");
+                });
+                $("#topBD").click(function() {
+                    $("#topB").toggleClass(" glyphicon-triangle-right");
+                    $("#topB").toggleClass(" glyphicon-triangle-bottom");
+                });
+                $("#topCD").click(function() {
+                    $("#topC").toggleClass(" glyphicon-triangle-right");
+                    $("#topC").toggleClass(" glyphicon-triangle-bottom");
+                });
+                $(".toggle-btn").click(function() {
+                    $("#leftMeun").toggleClass("show");
+                    $("#rightContent").toggleClass("pd0px");
+                })
+            })
+        </script>
+        <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/slide.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/flat-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.nouislider.css">
+        <link rel="stylesheet" href="css/admin02.css">
+    </head>
+
+<body>
+    <div id="wrap">
+        <!-- 左侧菜单栏目块 -->
+        <div class="leftMeun" id="leftMeun">
+            <div id="logoDiv">
+                <p id="logoP"><img id="logo" alt="后台管理" src="images/logo.png"><span>后台管理</span></p>
+            </div>
+            <div id="personInfor">
+                <p id="userName">冯亮</p>
+                <p>
+                    <a href="/myLogin">退出登录</a>
+                </p>
+            </div>
+            <div class="meun-title">多媒体管理</div>
+            <div class="meun-item meun-item-active" href="#video" aria-controls="video" role="tab" data-toggle="tab"><span style="width:25px;" class="glyphicon glyphicon-film"></span>视频管理</div>
+            <div class="meun-item" href="#music" aria-controls="music" role="tab" data-toggle="tab"><span style="width:25px;" class="glyphicon glyphicon-headphones"></span>音乐管理</div>
+            <div class="meun-item" href="#picture" aria-controls="picture" role="tab" data-toggle="tab"><span style="width:25px;" class="glyphicon glyphicon-picture"></span>图片管理</div>
+            <div class="meun-title">用户管理</div>
+            <div class="meun-item" href="#stud" aria-controls="stud" role="tab" data-toggle="tab"><span style="width:25px;" class="glyphicon glyphicon-user"></span>用户管理</div>
+            <div class="meun-item" href="#sour" aria-controls="sour" role="tab" data-toggle="tab"><span style="width:25px;" class="glyphicon glyphicon-certificate"></span>超级管理员</div>
+            <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><span style="width:25px;" class="glyphicon glyphicon-pencil"></span>修改密码</div>
+        </div>
+        <!-- 右侧具体内容栏目 -->
+        <div id="rightContent">
+                <a class="toggle-btn" id="nimei">
+                    <i class="glyphicon glyphicon-align-justify"></i>
+                </a>
+
+                <!-- Tab panes -->
+            <div class="tab-content">
+
+                <!-- 视频管理模块 -->
+                <div role="tabpanel" class="tab-pane active" id="video">
+                    <div class="check-div">
+                        <div class="col-xs-3">
+                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addChar">添加视频</button>
+                        </div>
+                    
+                        <div class="col-xs-4">
+                            <input id="videoFindValue" type="text" class="form-control input-sm" placeholder="输入文字搜索">
+                            <button id="videoFind" class="btn btn-white btn-xs ">查 询 </button>
+                        </div>
+                        
+                    </div>
+                    <div class="data-div">
+                        <div class="row tableHeader">
+                            <div class="col-xs-1 ">
+                                编码
+                            </div>
+                            <div class="col-xs-2">
+                                视频名
+                            </div>
+                            <div class="col-xs-3">
+                                视频首页地址
+                            </div>
+                            <div class="col-xs-4">
+                                视频地址
+                            </div>
+                            <div class="col-xs-2">
+                                操作
+                            </div>
+                        </div>
+
+                        <div id="videoList" class="tablebody">
+                            <% for(var i=0;i<dataArr.video.length;i++){ %>
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <span><%= i %></span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span><%=dataArr.video[i].title%></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span><%=dataArr.video[i].imgSrc%></span>
+                                </div>
+                                <div class="col-xs-4">
+                                    <span><%=dataArr.video[i].videoSrc%></span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <button class="btn btn-success btn-xs videoUpData" data-videoid="<%=dataArr.video[i]._id%>" data-toggle="modal" data-target="#changeChar">修改</button>
+                                    <button data-productclass="video"  data-delete="<%=dataArr.video[i].title%>" class="btn btn-danger btn-xs videoDel" data-toggle="modal" data-target="#deleteChar">删除</button>
+                                </div>
+                                </div>
+                            <%}%>
+
+                        </div>
+                    </div>
+                <!--增加视频弹出窗口-->
+                <div class="modal fade" id="addChar" role="dialog" aria-labelledby="gridSystemModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">添加视频</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+
+                                    <form class="form-horizontal">
+                                        <div class="form-group ">
+                                            <label for="title" class="col-xs-3 control-label">视频名称：</label>
+                                            <div class="col-xs-6 ">
+                                                <input type="text" class="form-control input-sm duiqi" id="videoTitle" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imgSrc" class="col-xs-3 control-label">图片地址</label>
+                                            <div class="col-xs-6 ">
+                                                <input type="text" class="form-control input-sm duiqi" id="videoImgSrc" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="videoSrc" class="col-xs-3 control-label">视频地址：</label>
+                                            <div class="col-xs-6">
+                                                <input type="text" class="form-control input-sm duiqi" id="videoSrc" placeholder="">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                <button id="videoAdd" type="button" class="btn btn-xs btn-green" data-dismiss="modal">保 存</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+                <!--修改视频弹出窗口-->
+                <div class="modal fade" id="changeChar" role="dialog" aria-labelledby="gridSystemModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">修改视频</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <form class="form-horizontal">
+                                            <div class="form-group ">
+                                                    <label for="title" class="col-xs-3 control-label">视频名称：</label>
+                                                    <div class="col-xs-6 ">
+                                                        <input  type="text" class="form-control input-sm duiqi" id="vuTitle" placeholder="">
+                                                    </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="imgSrc" class="col-xs-3 control-label">图片地址</label>
+                                                <div class="col-xs-6 ">
+                                                    <input type="text" class="form-control input-sm duiqi" id="vuImgSrc" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="videoSrc" class="col-xs-3 control-label">视频地址：</label>
+                                                <div class="col-xs-6">
+                                                    <input type="text" class="form-control input-sm duiqi" id="vuVideoSrc" placeholder="">
+                                                </div>
+                                            </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                <button id="vuUpdataYes" type="button" class="btn btn-xs btn-green" data-dismiss="modal">保 存</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+                <!--弹出删除视频警告窗口-->
+                <div class="modal fade" id="deleteChar" role="dialog" aria-labelledby="gridSystemModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    确定要删除该视频？删除后不可恢复！
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                <button id="videoYes" type="button" class="btn btn-xs btn-danger" data-dismiss="modal">确 定</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                </div>
+                
+                <!-- 音乐管理模块 -->
+                <div role="tabpanel" class="tab-pane" id="music">
+
+                        <div class="check-div form-inline">
+                            <div class="col-xs-3">
+                                <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSchool">添加音乐 </button>
+                            </div>
+                            <div class="col-xs-4">
+                                    <input id="musicFindValue" type="text" class="form-control input-sm" placeholder="输入文字搜索">
+                                    <button id="musicFind" class="btn btn-white btn-xs ">查 询 </button>
+                            </div>
+                        </div>
+                        <div class="data-div">
+                            <div class="row tableHeader">
+                                <div class="col-xs-1">
+                                    音乐图片地址
+                                </div>
+                                <div class="col-xs-3">
+                                   音乐图片地址
+                                </div>
+                                <div class="col-xs-4">
+                                    音乐地址
+                                </div>
+                                <div class="col-xs-3">
+                                    MV地址
+                                </div>
+                                <div class="col-xs-1">
+                                    操作
+                                </div>
+                            </div>
+                            <div id="musicList" class="tablebody">
+                                <% for(var i=0;i<dataArr.music.length;i++){ %>
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <span><%=dataArr.music[i].title%></span> 
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span><%=dataArr.music[i].imgSrc%></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span><%=dataArr.music[i].musicSrc%></span>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span><%=dataArr.music[i].videoSrc%></span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <button class="btn btn-success btn-xs musicUpData" data-musicid="<%=dataArr.music[i]._id%>" data-toggle="modal" data-target="#reviseSchool">修改</button>
+                                        <button data-productclass="music"  data-delete="<%=dataArr.music[i].title%>" class="btn btn-danger btn-xs musicDel" data-toggle="modal" data-target="#deleteSchool">删除</button>
+                                    </div>
+                                </div>
+                                <%}%>
+                            </div>
+                        </div>
+                    
+        
+                        <!--弹出添加音乐窗口-->
+                        <div class="modal fade" id="addSchool" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="gridSystemModalLabel">添加音乐</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <form class="form-horizontal">
+                                                <div class="form-group ">
+                                                    <label for="musicTitle" class="col-xs-3 control-label">音乐名称：</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input type="text" class="form-control input-sm duiqi" id="musicTitle" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="musicImgSrc" class="col-xs-3 control-label">音乐图片地址：</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input type="text" class="form-control input-sm duiqi" id="musicImgSrc" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="musicSrc" class="col-xs-3 control-label">音乐地址：</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input type="text" class="form-control input-sm duiqi" id="musicSrc" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="musicVideoSrc" class="col-xs-3 control-label">MV地址：</label>
+                                                    <div class="col-xs-8">
+                                                        <input type="text" class="form-control input-sm duiqi" id="musicVideoSrc" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                        <button id="musicAdd" type="button" class="btn btn-xs btn-green" data-dismiss="modal">保 存</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+        
+                        <!--弹出修改音乐窗口-->
+                        <div class="modal fade" id="reviseSchool" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="gridSystemModalLabel">修改音乐</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <form class="form-horizontal">
+                                                <div class="form-group ">
+                                                    <label for="muTitle" class="col-xs-3 control-label">音乐名称：</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input type="text" class="form-control input-sm duiqi" id="muTitle" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="muImgSrc" class="col-xs-3 control-label">音乐图片地址：</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input type="text" class="form-control input-sm duiqi" id="muImgSrc" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="muMusicSrc" class="col-xs-3 control-label">音乐地址：</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input type="text" class="form-control input-sm duiqi" id="muMusicSrc" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="muVideoSrc" class="col-xs-3 control-label">MV地址：</label>
+                                                    <div class="col-xs-8">
+                                                        <input type="text" class="form-control input-sm duiqi" id="muVideoSrc" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                        <button id="muUpdataYes" type="button" class="btn btn-xs btn-green" data-dismiss="modal">保 存</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+        
+                        <!--弹出删除音乐警告窗口-->
+                        <div class="modal fade" id="deleteSchool" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            确定要删除该音乐？删除后不可恢复！
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                        <button  id="musicYes" type="button" class="btn btn-xs btn-danger" data-dismiss="modal">确 定</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+        
+                </div>
+                
+                <!--图片管理模块-->
+                <div role="tabpanel" class="tab-pane" id="picture">
+                    <div class="check-div form-inline">
+                        <div class="col-xs-3">
+                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加图片 </button>
+                        </div>
+                        <div class="col-xs-4">
+                            <input id="pictureFindValue" type="text" class="form-control input-sm" placeholder="输入文字搜索">
+                            <button id="pictureFind" class="btn btn-white btn-xs ">查 询 </button>
+                        </div>
+                    </div>
+                    <div  class="data-div">
+                        <div class="row tableHeader">
+                            <div class="col-xs-2 ">
+                                编号
+                            </div>
+                            <div class="col-xs-3">
+                                图片名
+                            </div>
+                            <div class="col-xs-5">
+                                图片地址
+                            </div>
+                            <div class="col-xs-2">
+                                操作
+                            </div>
+                        </div>
+                        <div id="pictureList" class="tablebody">
+                            <% for(var i=0;i<dataArr.picture.length;i++) {%>
+                                
+                            <div class="row">
+                                <div class="col-xs-2 ">
+                                    <span><%= i %></span>
+                                    
+                                </div>
+                                <div class="col-xs-3">
+                                    <span><%= dataArr.picture[i].title%></span> 
+                                </div>
+                                <div class="col-xs-5">
+                                    <span><%= dataArr.picture[i].imgSrc%></span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <button class="btn btn-success btn-xs pictureUpData" data-pictureid="<%= dataArr.picture[i]._id%>" data-toggle="modal" data-target="#reviseUser">修改</button>
+                                    <button data-productclass="picture"  data-delete="<%=dataArr.picture[i].title%>" class="btn btn-danger btn-xs pictureDel" data-toggle="modal" data-target="#deleteUser">删除</button>
+                                </div>
+                            </div>
+                            <%}%>
+                        </div>
+
+                    </div>
+
+                    <!--弹出添加图片窗口-->
+                    <div class="modal fade" id="addUser" role="dialog" aria-labelledby="gridSystemModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="gridSystemModalLabel">添加图片</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <form class="form-horizontal">
+                                            <div class="form-group ">
+                                                <label for="pictureTitle" class="col-xs-3 control-label">图片名：</label>
+                                                <div class="col-xs-8 ">
+                                                    <input type="text" class="form-control input-sm duiqi" id="pictureTitle" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pictureImgSrc" class="col-xs-3 control-label">图片地址：</label>
+                                                <div class="col-xs-8 ">
+                                                    <input type="text" class="form-control input-sm duiqi" id="pictureImgSrc" placeholder="">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                    <button id="pictureAdd" type="button" class="btn btn-xs btn-green" data-dismiss="modal">保 存</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
+                    <!--弹出修改图片窗口-->
+                    <div class="modal fade" id="reviseUser" role="dialog" aria-labelledby="gridSystemModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="gridSystemModalLabel">修改图片</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <form class="form-horizontal">
+                                            <div class="form-group ">
+                                                <label for="puTitle" class="col-xs-3 control-label">图片名：</label>
+                                                <div class="col-xs-8 ">
+                                                    <input type="text" class="form-control input-sm duiqi" id="puTitle" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="puImgSrc" class="col-xs-3 control-label">图片地址：</label>
+                                                <div class="col-xs-8 ">
+                                                    <input type="text" class="form-control input-sm duiqi" id="puImgSrc" placeholder="">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                    <button id="puUpDataYes" type="button" class="btn btn-xs btn-green" data-dismiss="modal">qued</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
+                    <!--弹出删除图片警告窗口-->
+                    <div class="modal fade" id="deleteUser" role="dialog" aria-labelledby="gridSystemModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        确定要删除该图片？删除后不可恢复！
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                    <button id="pictureYes" type="button" class="btn  btn-xs btn-danger" data-dismiss="modal">确 定</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
+                </div>
+
+                <!-- 修改密码模块 -->
+                <div role="tabpanel" class="tab-pane" id="chan">
+                    <div class="check-div">
+                        原始密码为123
+                    </div>
+                    <div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
+                        <form class="form-horizontal">
+                            <div id="passwordSuccess" style="display:none" class="alert alert-success" role="alert">修改成功</div>
+                            <div class="form-group">
+                                <label for="originalPassword" class="col-xs-4 control-label">原密码：</label>
+                                <div class="col-xs-5">
+                                    <input required id="originalPassword" type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                </div>
+                            </div>
+                            <div id="passwordError" style="display:none" class="alert alert-danger" role="alert">密码错误</div>
+                            <div class="form-group">
+                                <label for="newPassword" class="col-xs-4 control-label">新密码：</label>
+                                <div class="col-xs-5">
+                                    <input required id="newPassword" type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="againPassword" class="col-xs-4 control-label">重复密码：</label>
+                                <div class="col-xs-5">
+                                    <input required id="againPassword" type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                </div>
+                            </div>
+                            <div id="passwordDif" style="display:none" class="alert alert-danger" role="alert">两者不同</div>
+                            <div class="form-group text-right">
+                                <div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
+                                    <button type="reset" class="btn btn-xs btn-white">取 消</button>
+                                    <button id="resetPassword" type="button" class="btn btn-xs btn-green">保存</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            
+                <!--用户管理模块-->
+                <div role="tabpanel" class="tab-pane" id="stud">
+                        <div class="check-div form-inline">
+                            <div class="col-xs-5">
+                                <input type="text" class=" form-control input-sm" placeholder="输入文字搜索" style="!height: 40px!important;">
+                                <button class="btn btn-white btn-xs ">查 询 </button>
+                            </div>
+
+                        </div>
+                        <div class="data-div">
+                            <div class="row tableHeader">
+                                <div class="col-xs-3 ">
+                                    手机号
+                                </div>
+                                <div class="col-xs-2 ">
+                                    密码
+                                </div>
+                                <div class="col-xs-3 ">
+                                    邮箱
+                                </div>
+                                <div class="col-xs-1">
+                                    性别
+                                </div>
+                                <div class="col-xs-3">
+                                    操作
+                                </div>
+                            </div>
+                            <div class="tablebody">
+                            <% for(var i=0;i<dataArr.user.length;i++){ %>
+                                <div class="row">
+                                    <div class="col-xs-3 ">
+                                        <%=dataArr.user[i].title %>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <%=dataArr.user[i].password %>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <%=dataArr.user[i].email %>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <%=dataArr.user[i].sex %>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <button style="display:none"  class="btn btn-success btn-xs vipReady">超级VIP</button>
+                                        <button data-phone="<%=dataArr.user[i].title %>" class="btn btn-danger btn-xs vipBtn" data-toggle="modal" data-target="#deleteObey">添加VIP</button>
+                                        
+                                        <span style="visibility:hidden" class="vipSpan" ><%=dataArr.user[i].vip %></span>
+                                    </div>
+                                </div>
+                            <%}%>
+                            </div>
+
+                        </div>
+
+                        <!--弹出添加vip窗口-->
+
+                        <div class="modal fade" id="deleteObey" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            确定要为该用户添加vip？
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                        <button id="addVipYes" type="button" class="btn btn-xs btn-danger" data-dismiss="modal">保 存</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
+                </div>
+                
+                <!--超级管理员-->
+                <div role="tabpanel" class="tab-pane" id="sour">
+                        <div class="check-div form-inline">
+                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加管理员</button>
+                        </div>
+                        <div class="data-div">
+                            <div class="row tableHeader">
+                                <div class="col-xs-3 ">
+                                    编号
+                                </div>
+                                <div class="col-xs-3 ">
+                                    手机号
+                                </div>
+                                <div class="col-xs-3 ">
+                                    密码
+                                </div>
+                                <div class="col-xs-3">
+                                    操作
+                                </div>
+                            </div>
+                            <div class="tablebody">
+                                <% for(var i=0;i<dataArr.super.length;i++){ %>
+                                <div class="row ">
+                                    <div class="col-xs-3 ">
+                                        <span><%= i %></span>
+                                    </div>
+                                    <div class="col-xs-3 ">
+                                        <span id="myName"><%=dataArr.super[i].title %></span>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span id="myPassword"><%=dataArr.super[i].password %></span>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <button data-delete="<%=dataArr.super[i].title %>" id="deleteSuperBtn" class="btn btn-danger btn-xs superDel" data-toggle="modal" data-target="#deleteSource">删除</button>
+                                    </div>
+                                </div>
+                                <%}%>
+                            </div>
+                        </div>
+
+                
+                        <!--弹出窗口 添加资源-->
+                        <div class="modal fade" id="addSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="gridSystemModalLabel">添加超级管理员</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <form class="form-horizontal">
+                                                <div class="form-group ">
+                                                    <label for="sName" class="col-xs-3 control-label">名称：</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input id="superTitle" type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sLink" class="col-xs-3 control-label">密码</label>
+                                                    <div class="col-xs-8 ">
+                                                        <input id="superPassword" type="" class="form-control input-sm duiqi" id="sLink" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                        <button id="superAdd" type="button" class="btn btn-xs btn-xs btn-green" data-dismiss="modal">确 定</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
+                        <!-- /.modal -->
+                        <!--弹出删除资源警告窗口-->
+                        <div class="modal fade" id="deleteSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            确定要删除该超级管理员？删除后不可恢复！
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                        <button id="superDelYes" type="button" class="btn btn-xs btn-danger" data-dismiss="modal">确 定</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+            </div>
+        </div>
+    </div>
+
+<script src="js/jquery.nouislider.js"></script>
+
+<!-- this page specific inline scripts -->
+<script>
+    //min/max slider
+    function huadong(my, unit, def, max) {
+        $(my).noUiSlider({
+            range: [0, max],
+            start: [def],
+            handles: 1,
+            connect: 'upper',
+            slide: function() {
+                var val = Math.floor($(this).val());
+                $(this).find(".noUi-handle").text(
+                        val + unit
+                        );
+            },
+            set: function() {
+                var val = Math.floor($(this).val());
+                $(this).find(".noUi-handle").text(
+                        val + unit
+                        );
+            }
+        });
+        $(my).val(def, true);
+    }
+    huadong('.slider-minmax1', "分钟", "5", 30);
+    huadong('.slider-minmax2', "分钟", "6", 15);
+    huadong('.slider-minmax3', "分钟", "10", 60);
+    huadong('.slider-minmax4', "次", "2", 10);
+    huadong('.slider-minmax5', "天", "3", 7);
+    huadong('.slider-minmax6', "天", "8", 10);
+</script>
+
+
+<script>
+    $(document).ready(function(){
+       
+        // 视频删除
+        var videoLenght=document.querySelectorAll("#videoList .row").length;
+        $(".videoDel").click(function(){
+            videoLenght--;
+           var that=this;
+           var deleteTitle= $(this).data('delete');
+           var productClass= $(this).data('productclass');
+           $("#videoYes").click(function(){
+                $.post("/deleteProduct", {
+                    "title": deleteTitle,
+                    "productClass":productClass
+                }, function (data) {
+                    if(data.code==0){
+                        $(that).parent().parent().css("display","none");
+                    }
+                });
+           })
+        })
+
+        //视频添加
+        $("#videoAdd").click(function(){
+            videoLenght++;
+            $.post("/addProduct", {
+                "title": $("#videoTitle").val(),
+                "productClass":"video",
+                "imgSrc":$("#videoImgSrc").val(),
+                "videoSrc":$("#videoSrc").val()
+            }, function (data) {
+                if(data.code==1){
+                    history.go(0)
+                }
+            });
+        })
+
+        //视频修改
+        $(".videoUpData").click(function(){
+            var that=this;
+            var id=$(this).data("videoid");
+            $("#vuTitle").val($(this).parent().siblings().eq(1).children().text());
+            $("#vuImgSrc").val($(this).parent().siblings().eq(2).children().text());
+            $("#vuVideoSrc").val($(this).parent().siblings().eq(3).children().text());
+    
+            $("#vuUpdataYes").click(function(){
+                $.post("/updataProduct",{
+                    "id":id,
+                    "title":$("#vuTitle").val(),
+                    "productClass":"video",
+                    "imgSrc":$("#vuImgSrc").val(),
+                    "videoSrc":$("#vuVideoSrc").val()
+                },function(data){
+                    if(data.code==1){
+                        $(that).parent().siblings().eq(1).children().text($("#vuTitle").val());
+                        $(that).parent().siblings().eq(2).children().text($("#vuImgSrc").val());
+                        $(that).parent().siblings().eq(3).children().text($("#vuVideoSrc").val());
+                    }
+                })
+            })
+        })
+
+        //查询视频
+        $("#videoFind").click(function(){
+            $.post("/findProduct",{
+                "productClass":"video",
+                "title":$("#videoFindValue").val(),
+            },function(data){
+                
+                if(videoLenght > data.length){
+                      for(var j=data.length;j<videoLenght;j++){
+                        $("#videoList").children().eq(j).css("display","none");
+                      }
+                }else if(videoLenght < data.length){
+                    for(var j=videoLenght;j<data.length;j++){
+                        $("#videoList").children().eq(j).css("display","block");
+                      }
+                }else{
+                    for(var j=0;j<data.length;j++){
+                        $("#videoList").children().eq(j).css("display","block");
+                    }
+                }
+                for(var i=0;i<data.length;i++){
+                  $("#videoList").children().eq(i).children().eq(0).children().text(i);
+                  $("#videoList").children().eq(i).children().eq(1).children().text(data[i].title);
+                  $("#videoList").children().eq(i).children().eq(2).children().text(data[i].imgSrc);
+                  $("#videoList").children().eq(i).children().eq(3).children().text(data[i].videoSrc);
+                 
+                }
+
+            })
+            
+        })
+
+
+
+        var musicLenght=document.querySelectorAll("#musicList .row").length;
+        //删除音乐
+        $(".musicDel").click(function(){
+            musicLenght--;
+            var that=this;
+            var deleteTitle= $(this).data('delete');
+            var productClass= $(this).data('productclass');
+            $("#musicYes").click(function(){
+                 $.post("/deleteProduct", {
+                     "title": deleteTitle,
+                     "productClass":productClass
+                 }, function (data) {
+                    if(data.code==0){
+                        $(that).parent().parent().css("display","none");
+                    }
+                 });
+            })
+         })
+
+         //添加音乐
+         $("#musicAdd").click(function(){
+            musicLenght++;
+            $.post("/addProduct", {
+                "title": $("#musicTitle").val(),
+                "productClass":"music",
+                "imgSrc":$("#musicImgSrc").val(),
+                "musicSrc":$("#musicSrc").val(),
+                "videoSrc":$("#musicVideoSrc").val()
+            }, function (data) {
+                if(data.code==1){
+                    history.go(0)
+                }
+            });
+        })
+
+        //音乐修改
+        $(".musicUpData").click(function(){
+            var that=this;
+            var id=$(this).data("musicid");
+            
+            $("#muTitle").val($(this).parent().siblings().eq(0).children().text());
+            $("#muImgSrc").val($(this).parent().siblings().eq(1).children().text());
+            $("#muMusicSrc").val($(this).parent().siblings().eq(2).children().text());
+            $("#muVideoSrc").val($(this).parent().siblings().eq(3).children().text());
+    
+            $("#muUpdataYes").click(function(){
+                
+                $.post("/updataProduct",{
+                    "id":id,
+                    "title":$("#muTitle").val(),
+                    "productClass":"music",
+                    "imgSrc":$("#muImgSrc").val(),
+                    "musicSrc":$("#muMusicSrc").val(),
+                    "videoSrc":$("#muVideoSrc").val()
+                },function(data){
+                    if(data.code==1){
+                        $(that).parent().siblings().eq(0).children().text($("#muTitle").val());
+                        $(that).parent().siblings().eq(1).children().text($("#muImgSrc").val());
+                        $(that).parent().siblings().eq(2).children().text($("#muMusicSrc").val());
+                        $(that).parent().siblings().eq(3).children().text($("#muVideoSrc").val());
+                    }
+                })
+            })
+        })
+
+         //查询音乐
+         $("#musicFind").click(function(){
+            $.post("/findProduct",{
+                "productClass":"music",
+                "title":$("#musicFindValue").val(),
+            },function(data){
+                if(musicLenght > data.length){
+                      for(var j=data.length;j<musicLenght;j++){
+                        $("#musicList").children().eq(j).css("display","none");
+                      }
+                }else if(musicLenght < data.length){
+                    for(var j=musicLenght;j<data.length;j++){
+                        $("#musicList").children().eq(j).css("display","block");
+                      }
+                }else{
+                    for(var j=0;j<data.length;j++){
+                        $("#musicList").children().eq(j).css("display","block");
+                    }
+                }
+                for(var i=0;i<data.length;i++){
+                  $("#musicList").children().eq(i).children().eq(0).children().text(data[i].title);
+                  $("#musicList").children().eq(i).children().eq(1).children().text(data[i].imgSrc);
+                  $("#musicList").children().eq(i).children().eq(2).children().text(data[i].musicSrc);
+                  $("#musicList").children().eq(i).children().eq(3).children().text(data[i].videoSrc);
+                 
+                }
+
+            })
+            
+        })
+
+         
+
+        // 删除图片
+        var pictureLenght=document.querySelectorAll("#pictureList .row").length;
+         $(".pictureDel").click(function(){
+            pictureLenght--;
+            var that=this;
+            var deleteTitle= $(this).data('delete');
+            var productClass= $(this).data('productclass');
+            $("#pictureYes").click(function(){
+                 $.post("/deleteProduct", {
+                     "title": deleteTitle,
+                     "productClass":productClass
+                 }, function (data) {
+                    if(data.code==0){
+                        $(that).parent().parent().css("display","none");
+                    }
+                 });
+            })
+         })
+
+        //添加图片
+        $("#pictureAdd").click(function(){
+            pictureLenght++;
+            // console.log("dianjil")
+            $.post("/addProduct", {
+                "title": $("#pictureTitle").val(),
+                "productClass":"picture",
+                "imgSrc":$("#pictureImgSrc").val()
+            }, function (data) {
+                if(data.code==1){
+                    history.go(0)
+                }
+            });
+        })
+
+        // 修改图片
+        $(".pictureUpData").click(function(){
+            // console.log("kakak")
+            var that=this;
+            var id=$(this).data("pictureid");
+            
+            $("#puTitle").val($(this).parent().siblings().eq(1).children().text());
+            $("#puImgSrc").val($(this).parent().siblings().eq(2).children().text());
+           
+    
+            $("#puUpDataYes").click(function(){
+                // console.log("jajajaj")
+                
+                $.post("/updataProduct",{
+                    "id":id,
+                    "title":$("#puTitle").val(),
+                    "productClass":"picture",
+                    "imgSrc":$("#puImgSrc").val()
+                },function(data){
+                    if(data.code==1){
+                        $(that).parent().siblings().eq(1).children().text($("#puTitle").val());
+                        $(that).parent().siblings().eq(2).children().text($("#muImgSrc").val());
+                    }
+                })
+            })
+        })
+
+        //查询图片
+        $("#pictureFind").click(function(){
+            $.post("/findProduct",{
+                "productClass":"picture",
+                "title":$("#pictureFindValue").val(),
+            },function(data){
+                if(pictureLenght > data.length){
+                    // console.log("满足")
+                      for(var j=data.length;j<pictureLenght;j++){
+                        $("#pictureList").children().eq(j).css("display","none");
+                      }
+                }else if(pictureLenght < data.length){
+                    for(var j=pictureLenght;j<data.length;j++){
+                        $("#pictureList").children().eq(j).css("display","block");
+                      }
+                }else{
+                    for(var j=0;j<data.length;j++){
+                        $("#pictureList").children().eq(j).css("display","block");
+                    }
+                }
+                for(var i=0;i<data.length;i++){
+                  $("#pictureList").children().eq(i).children().eq(0).children().text(i);
+                  $("#pictureList").children().eq(i).children().eq(1).children().text(data[i].title);
+                  $("#pictureList").children().eq(i).children().eq(2).children().text(data[i].imgSrc);
+                 
+                }
+
+            })
+            
+        })
+
+
+        //添加超级管理员
+        $("#superAdd").click(function(){
+            
+            // console.log("1");
+            $.post("/addSuper", {
+                "title": $("#superTitle").val(),
+                "password": $("#superPassword").val(),
+            }, function (data) {
+                if(data.code==1){
+                    history.go(0)
+                }
+            });
+        })
+
+        //删除超级管理员
+        $(".superDel").click(function(){
+
+           var that=this;
+           var deleteTitle= $(this).data('delete');
+        //    console.log(deleteTitle)
+           $("#superDelYes").click(function(){
+                $.post("/deleteSuper", {
+                    "title": deleteTitle
+                }, function (data) {
+                    if(data.code==0){
+                        $(that).parent().parent().css("display","none");
+                    }
+                });
+           })
+        })
+
+
+        var superName=window.sessionStorage.getItem('superName');
+        console.log(superName)
+        $("#userName").text(superName);
+         //修改密码
+         $("#resetPassword").click(function(){
+            
+
+            // console.log(superName)
+            var myPassword=123;
+            var originalPassword=$("#originalPassword").val();
+            var newPassword=$("#newPassword").val();
+            var againPassword=$("#againPassword").val();
+
+            $.post("/findSuper", { title: superName}, function(result) {
+                console.log(result)
+                myPassword=result.data[0].password;
+                console.log(myPassword);
+                if(myPassword==originalPassword){
+                    $("#passwordError").css("display","none");
+                    if(newPassword==againPassword){
+                        $("#passwordDif").css("display","none");
+                        $.post("/updataPassword",{
+                            "title":superName,
+                            "password":againPassword
+                        },function(data){
+                            if(data.code==1){
+                                $("#passwordSuccess").css("display","block");
+                            }
+                        })
+                    }else{
+                        $("#passwordDif").css("display","block");
+                    }
+                    
+                }else{
+                    $("#passwordError").css("display","block");
+                } 
+            
+            });
+           
+        })
+
+
+
+
+
+
+
+        //添加vip功能
+        var vipSpanArr=document.querySelectorAll(".vipSpan");
+        var vipBtnArr=document.querySelectorAll(".vipBtn");
+        var vipReadyArr=document.querySelectorAll(".vipReady");
+
+        for(var i=0;i<vipSpanArr.length;i++){
+            if(vipSpanArr[i].innerHTML=="true"){
+                vipBtnArr[i].style.display="none"
+                vipReadyArr[i].style.display="inline-block"
+            }
+        }
+        $(".vipBtn").click(function(){
+            var that=this;
+            $("#addVipYes").click(function(){
+                $.post("/updataUser",{title:$(that).data('phone')},function(data){
+                $(that).css("display","none").siblings().css("display","inline-block");
+                })
+            })
+        })
+        
+    })
+</script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+html,body{
+    width: 100%;  
+}
+.video_play{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height:100%;
+    background-color:rgba(0,0,0,1);
+    z-index: 9999;
+    display: none;
+}
+.video_play .play_box{
+    margin: 0 auto;
+    padding:0 20px;
+    width: 100%;
+    height: 100%;
+    
+}
+.play_box h3{
+    background-color: #fff;
+    height: 50px;
+    line-height: 50px;
+    text-align: center
+}
+.play_box h3 span{
+   float: right;
+   line-height: 50px;
+   margin-right: 10px;
+   color: #000;
+}
+.play_box video{
+    width: 100%;
+    height: 90%;
+    max-height: 550px;
+}
+.thumbnail{
+    position: relative;
+}
+.music_box{
+    display: inline-block;
+    border-radius: 50%;
+    padding: 20px;
+    background-color: gray;
+}
+.thumbnail span{
+    position: absolute;
+    top: 45%;
+    left: 46%;
+    color:#fff;
+    font-size: 20px;
+    
+}
+.thumbnail:hover span{
+    color:#000;
+}
+
+.music{
+    text-align: center;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 15px 10px;
+}
+
+footer {
+    background-color: #1b1f26;
+    padding: 30px 0;
+    padding-top: 45px;
+}
+.access-links li a {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Raleway-SemiBold;
+    color: #6c7380;
+}
+.fa-facebook-official:before {
+    content: "\f230";
+}

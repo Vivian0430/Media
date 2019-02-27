@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多媒体</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./ss/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./ss/css/default.css">
+    <link rel="stylesheet" href="./ss/assets/css/sangarSlider.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./ss/assets/themes/default/default.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./ss/assets/css/demo.css" type="text/css" media="all">
+
+    <script type="text/javascript" src="./ss/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/imagesloaded.min.js"></script>
+    <!-- jQuery Sangar Slider -->
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarBaseClass.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarSetupLayout.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarSizeAndScale.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarShift.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarSetupBulletNav.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarSetupNavigation.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarSetupSwipeTouch.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarSetupTimer.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarBeforeAfter.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarLock.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarResponsiveClass.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarResetSlider.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider/sangarTextbox.js"></script>
+    <script type="text/javascript" src="./ss/assets/js/sangarSlider.js"></script>
+    <script type='text/javascript'></script>
+
+    <!--[if lt IE 9]>
+<script src="//onreplaytv.com/wp-content/cache/wpfc-minified/b546511d62fa9218d13fc49c3dcc530a/1518645932index.js" type="text/javascript"></script>
+<![endif]-->
+    <!--[if lte IE 9]>
+<link rel="stylesheet" type="text/css" href="https://onreplaytv.com/wp-content/themes/onreplaytv/css/ie.css"/>
+<![endif]-->
+</head>
+
+<body>
+    <div class="media_header">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container-fluid">
+                <!-- 缩小以后变成图标 -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/" style="padding-left: 100px;">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">首页</a></li>
+                        <li><a href="videoMore">视频</a></li>
+                        <li><a href="musicMore">音乐</a></li>
+                        <li><a href="more">图片</a></li>
+
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="请输入查询内容">
+                        </div>
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </form>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="adminLogin" id="login" target="_self">登陆</a></li>
+                        <li><a href="register" id="register" target="_self">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- 内容 -->
+    <div class="media_content">
+        <div class="htmleaf-content bgcolor-3">
+            <div class='sangar-slideshow-container' id='sangar-example'>
+                <div class='sangar-content-wrapper' style='display:none;'>
+                    <div class='sangar-content'><img src='./ss/images/slide-1.jpg' /></div>
+                    <div class='sangar-content'><img src='./ss/images/slide-2.jpg' /></div>
+                    <div class='sangar-content'><img src='./ss/images/slide-3.jpg' /></div>
+                    <div class='sangar-content'><img src='./ss/images/slide-4.jpg' /></div>
+                    <div class='sangar-content'><img src='./ss/images/slide-5.jpg' /></div>
+                </div>
+            </div>
+        </div>
+        <!-- 多媒体分类部分 -->
+        <!-- 视频 -->
+        
+        <div class="container">
+            <div class="smart-box-head">
+                <h2 class="light-title title" style="display:inline-block;">视频</h2>
+                <span id="video_right_btn" class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"
+                    style="margin-top:20px;padding:5px 10px;border:2px solid #ccc">
+                </span>
+                <a id="toVideoMore"  class="pull-right" aria-hidden="true"
+                    style="cursor:pointer;text-decoration:none;margin-top:20px;padding:3px 10px;border:2px solid rgba(204, 204, 204, 0.609)">
+                    更多
+                </a>
+            </div>
+            <div style="height:200px;" class="video_list">
+                <!-- 第一部分 -->
+                <div id="video_first" class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" data-source="https://good.mynatapp.cc/video/video04.mp4">
+                            <img src="https://good.mynatapp.cc/images/video04.jpg" alt="..." >
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                      
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" data-source="https://good.mynatapp.cc/video/video01.mp4">
+                            <img src="https://good.mynatapp.cc/images/video01.jpg" alt="...">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" data-source="https://good.mynatapp.cc/video/video02.mp4">
+                            <img src="https://good.mynatapp.cc/images/video02.jpg" alt="...">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" data-source="https://good.mynatapp.cc/video/video03.mp4">
+                            <img src="https://good.mynatapp.cc/images/video03.jpg" alt="...">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                    </div>
+                </div>
+                <!-- 第二部分 -->
+                <div id="video_second" class="row" style="display:none">
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/videoDetail" class="thumbnail" data-source="https://good.mynatapp.cc/video/video05.mp4">
+                            <img src="https://good.mynatapp.cc/images/video05.jpg" alt="...">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" data-source="https://good.mynatapp.cc/video/video06.mp4">
+                            <img src="https://good.mynatapp.cc/images/video06.jpg" alt="...">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" data-source="https://good.mynatapp.cc/video/video07.mp4">
+                            <img src="https://good.mynatapp.cc/images/video07.jpg" alt="...">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" data-source="https://good.mynatapp.cc/video/video08.mp4">
+                            <img src="https://good.mynatapp.cc/images/video08.jpg" alt="...">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="video_play">
+            <div class="play_box">
+                <h3>视频 <span class="glyphicon glyphicon-remove cancled"></span></h3>
+                <video src="https://good.mynatapp.cc/video/video00.mp4" controls>  
+                </video>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 更多音乐 -->
+    <div class="container">
+        <div class="smart-box-head">
+            <h2 class="light-title title" style="display:inline-block;">音乐</h2>
+            <a id="toMusicMore" class="btn btn-default pull-right"  role="button" style="margin: 20px;">Move music</a>
+        </div>
+        <div class="row video_list" style="margin-top: 10px;">
+            <div class="col-xs-12 col-sm-6 col-md-3 music" >
+                <a href="#" class="thumbnail music_box" data-source="https://good.mynatapp.cc/video/music01.mp4">
+                    <span class="glyphicon glyphicon-music"></span>
+                    <img src="https://good.mynatapp.cc/images/music01.jpg" alt="..." style="border-radius:50%">
+                </a>
+                <audio controls src="https://good.mynatapp.cc/music/Make-It-Count.mp3"></audio>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 music">
+                <a href="#" class="thumbnail music_box">
+                    <span class="glyphicon glyphicon-music" data-source="https://good.mynatapp.cc/video/music02.mp4"></span>
+                    <img src="https://good.mynatapp.cc/images/music02.jpg" alt="..." style="border-radius:50%">
+                </a>
+                <audio controls src="https://good.mynatapp.cc/music/Make-It-Count.mp3"></audio>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 music">
+                <a href="#" class="thumbnail music_box">
+                    <span class="glyphicon glyphicon-music" data-source="https://good.mynatapp.cc/video/music03.mp4"></span>
+                    <img src="https://good.mynatapp.cc/images/music03.jpg" alt="..." style="border-radius:50%">
+                </a>
+                <audio controls src="https://good.mynatapp.cc/music/Make-It-Count.mp3"></audio>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 music">
+                <a href="#" class="thumbnail music_box" data-source="https://good.mynatapp.cc/video/music04.mp4">
+                    <span class="glyphicon glyphicon-music"></span>
+                    <img src="https://good.mynatapp.cc/images/music04.jpg" alt="..." style="border-radius:50%">
+                </a>
+                <audio controls src="https://good.mynatapp.cc/music/Make-It-Count.mp3"></audio>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片 -->
+
+    <div class="container">
+        <div class="smart-box-head">
+            <h2 class="light-title title" style="display:inline-block;">图片</h2>
+            <a id="toPictureMore" class="btn btn-default pull-right"  role="button" style="margin: 20px;">Move picture</a>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/1.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/2.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/3.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/4.jpg" alt="...">
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- VIP专区 -->
+    <div class="container">
+        <div class="smart-box-head">
+            <h2 class="light-title title" style="display:inline-block;">VIP专区</h2>
+            <a id="toVipMore" class="btn btn-default pull-right"  role="button" style="margin: 20px;">Move</a>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/6.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./images/1.jpg" alt="...">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <!-- 尾部 -->
+    <footer>
+            <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6 footer-logo-container">
+                            <a class="footer-logo" href="/"><img src="https://confidentcustomer.com/img/site/logo-white.png" class="img-responsive"></a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <img src="https://confidentcustomer.com/img/site/captera.png" class="img-responsive center-block">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6">
+                    <div class="row footer-list">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <ul class="list-inline access-links">
+                                <li><a href="#solution">solution</a></li>
+                                <li><a href="#how_it_works">how it works</a></li>
+                                <li><a href="#features">features</a></li>
+                                <li><a href="#testimonials">testimonials</a></li>
+                                <li><a href="#pricing">pricing</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <ul class="list-inline access-links">
+                                <li><a href="javascript:void(0);" onclick="window.open('https://apps.shopify.com/confidentcustomer');" class="page-scroll">shopify app</a></li>
+                                <li><a href="/yotpo-alternative">yotpo alternative</a></li>
+                                <li><a href="/blog">blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <ul class="list-inline access-links">
+        
+        
+                                <li><a href="/login">login</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-2 footer-logo">
+                    <ul class="list-inline social-links text-right">
+                        <li><a href="https://www.facebook.com/ConfidentCustomer"><i class="fa fa-lg fa-facebook-official footer-icon"></i></a></li>
+                        <li><a href="https://twitter.com/confcustomer"><i class="fa fa-lg fa-twitter footer-icon"></i></a></li>
+                        <li><a href="https://www.instagram.com/confidentcustomer/"><i class="fa fa-lg fa-instagram footer-icon"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/confidentcustomer"><i class="fa fa-lg fa-linkedin footer-icon"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </footer>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            /**
+             * 轮播图初始化
+             * identifier variable must be unique ID
+             */
+            var sangar = $('#sangar-example').sangarSlider({
+                timer: true, // 是否自动轮播
+                advanceSpeed: 3000,//当timer可用时，该参数指定自动播放动画的过渡时间     
+                startClockOnMouseOut: true, //是否在鼠标移出时开始计时
+                startClockOnMouseOutAfter: 1000,//在鼠标移出后多长时间重新开始timer计时
+                pagination: 'content-horizontal', //轮播图的导航类型 bullet, content, none
+                paginationContent: ["./ss/images/thumb/thumb-slide-1.jpg", "./ss/images/thumb/thumb-slide-2.jpg", "./ss/images/thumb/thumb-slide-3.jpg", "./ss/images/thumb/thumb-slide-4.jpg", "./ss/images/thumb/thumb-slide-5.jpg"], //可以是文本，图片或其它内容 can be text, image, or something			        
+                paginationContentType: 'image', // text, image
+                paginationContentWidth: 120, //轮播图导航内容的宽度，单位像素 
+                paginationImageHeight: 90, // 图片导航的高度
+                width: 850, // slideshow width
+                height: 400, // slideshow height
+                fixedHeight: true,
+                scaleSlide: true // slider will scale to the container size
+            });
+            // 切换视频点击事件
+            var flag = true;
+            $("#video_right_btn").click(function () {
+                if (flag) {
+                    $("#video_first").fadeOut(1000);
+                    setTimeout(function () {
+                        $("#video_second").fadeIn(1000);
+                        flag = false;
+                    }, 1000)
+                } else {
+                    $("#video_second").fadeOut(1000);
+                    setTimeout(function () {
+                        $("#video_first").fadeIn(1000);
+                        flag = true;
+                    }, 1000)
+                }
+            })
+
+            //用户登录以后的欢迎
+            var phone=window.sessionStorage.getItem("phone");
+            console.log(phone);
+            if(phone){
+                $("#login").text("欢迎"+phone);
+                $("#register").css("display","none");
+            }
+
+
+            var videoA=document.querySelectorAll(".video_list a");
+            var videoPlay=document.querySelector(".video_play");
+            // var videoSource=document.querySelector(".play_box source");
+            var cancled=document.querySelector(".cancled");
+            var video=document.querySelector("video");
+            var videoIndex=0;
+
+            console.log(videoA);
+            for(var i=0;i<videoA.length;i++){
+                videoA[i].index=i;
+                videoA[i].onclick=function(){
+                    videoIndex=this.index;
+                    var source=this.dataset['source'];
+                    // console.log(source);
+                    videoPlay.style.display="block";
+                    document.querySelector("body").style.overflow="hidden";
+                    video.src=source;
+                }
+            }
+            cancled.onclick=function(){
+                video.pause();
+                videoPlay.style.display="none";
+                document.querySelector("body").style.overflow="auto";
+            }
+
+
+            // var navArr=document.querySelectorAll(".nav>li>a");
+            $(".nav>li").click(function(){
+                console.log("akaka");
+                $(this).addClass("active").siblings().removeClass("active");
+            })
+
+            var userName=window.sessionStorage.getItem("phone");
+           
+                $("#toVideoMore").click(function(){
+                    if(userName){
+                        window.location.href = 'videoMore';
+                    }else{
+                        window.location.href = 'adminLogin';
+                    }
+                })
+
+                $("#toMusicMore").click(function(){
+                    if(userName){
+                        window.location.href = 'musicMore';
+                    }else{
+                        window.location.href = 'adminLogin';
+                    }
+                })
+
+                $("#toPictureMore").click(function(){
+                    if(userName){
+                        window.location.href = 'more';
+                    }else{
+                        window.location.href = 'adminLogin';
+                    }
+                    
+                })
+                $("#toVipMore").click(function(){
+                    if(!userName){
+                            window.location.href = 'adminLogin';
+                    }else{
+                        $.post("/findUser", { title: userName}, function(result) {
+                            console.log(result.data[0].vip);
+                            if(result.data[0].vip){
+                                window.location.href = 'vipMore';
+                            }else{
+                                window.location.href = 'vip';
+                                
+                            }
+                        });
+                    }     
+                })
+        })		
+    </script>
+</body>
+
+</html>

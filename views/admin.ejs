@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多媒体后台管理</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/admin.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="chuan_left">
+        <div class="headImg">
+            <img src="./images/Koala.jpg" alt="">
+        </div>
+        <h2 style="margin-top:0px">后台管理</h2>
+        <ul class="nav_list">
+            <li class="active">视频</li>
+            <li>音乐</li>
+            <li>图片</li>
+            <li>用户</li>
+        </ul>
+    </div>
+    <div class="chuan_right">
+        <div class="opreation_list">
+            <ul>
+                <li class="add">添加</li>
+                <li class="delete">删除</li>
+                <li class="update">修改</li>
+                <li class="query">查询</li>
+            </ul>
+
+        </div>
+        <div class="add_form">
+            <form action="" method="post">
+                <h3>添加</h3>
+                <div class="">
+                    <label for="">请选择类别</label>
+                    <select name="" id="">
+                        <option value="video">video</option>
+                        <option value="music">music</option>
+                        <option value="picture">picture</option>
+                    </select>
+                </div>
+
+                <div class="">
+                    <label for="">请输入名称</label>
+                    <input type="text" placeholder="请输入名称" name="title">
+                </div>
+
+                <div class="">
+                    <label for="">请输入图片地址</label>
+                    <input type="text" placeholder="请输入图片地址" name="imgSrc">
+                </div>
+
+                <div class="">
+                        <label for="">请输入视频地址</label>
+                        <input type="text" placeholder="请输入视频地址" name="imgSrc">
+                </div>
+                
+                <input type="button" class="yes_btn" value="添加">
+                <input type="button" class="no_btn" value="取消">
+            </form>
+        </div>
+
+        <!-- 视频   -->
+        <div id="table" class="product_table">
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>图片预览</th>
+                        <th>视频名称</th>
+                        <th>图片地址</th>
+                        <th>视频地址</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<dataArr.video.length;i++){ %>
+                    <tr>
+                        <td>
+                            <input id="checkbox" name="Fruit" type="checkbox" value="" data-class="video" data-name="<%=dataArr.video[i].title %>"/>
+                        </td>
+                        <td>
+                            <img src=<%=dataArr.video[i].imgSrc %> alt="">
+                        </td>
+                        <td><%=dataArr.video[i].title %></td>
+                        <td><%=dataArr.video[i].imgSrc %></td>
+                        <td><%=dataArr.video[i].videoSrc %></td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <!-- 音乐 -->
+        <div id="table" class="product_table hide">
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>图片预览</th>
+                        <th>MV名称</th>
+                        <th>图片地址</th>
+                        <th>音乐地址</th>
+                        <th>MV地址</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<dataArr.music.length;i++){ %>
+                        <tr>
+                            <td>
+                                <input id="checkbox" name="Fruit" type="checkbox" value="" data-class="music" data-name="<%=dataArr.music[i].title %>"/>
+                            </td>
+                            <td>
+                                <img src=<%=dataArr.music[i].imgSrc %> alt="">
+                            </td>
+                            <td><%=dataArr.music[i].title %></td>
+                            <td><%=dataArr.music[i].imgSrc %></td>
+                            <td><%=dataArr.music[i].musicSrc %></td>
+                            <td><%=dataArr.music[i].videoSrc %></td>
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </div>
+        <!-- 图片 -->
+         <div id="table" class="product_table hide">
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>图片预览</th>
+                        <th>图片名称</th>
+                        <th>图片地址</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<dataArr.picture.length;i++){ %>
+                        <tr>
+                            <td>
+                                <input id="checkbox" name="Fruit" type="checkbox" value="" data-class="picture" data-name="<%=dataArr.picture[i].title %>"/>
+                            </td>
+                            <td>
+                                <img src=<%=dataArr.picture[i].imgSrc %> alt="">
+                            </td>
+                            <td><%=dataArr.picture[i].title %></td>
+                            <td><%=dataArr.picture[i].imgSrc %></td>
+                           
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </div>
+        <!-- 用户 -->
+        <div id="table" class="product_table hide" >
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>用户名称</th>
+                        <th>用户密码</th>
+                        <th>用户性别</th>
+                        <th>VIP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<dataArr.user.length;i++){ %>
+                        <tr>
+                            <td>
+                                <input id="checkbox" name="Fruit" type="checkbox" value="" data-class="user" data-name="<%=dataArr.user[i].title %>"/>
+                            </td>
+                            <td><%=dataArr.user[i].title %></td>
+                            <td><%=dataArr.user[i].password %></td>
+                            <td><%=dataArr.user[i].sex %></td>
+                            <td><%=dataArr.user[i].vip %></td>
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        // 左右切换用户表
+        var liArr = document.querySelectorAll(".nav_list li");
+        var tableArr = document.querySelectorAll("#table");
+
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].index = i;
+
+            liArr[i].onclick = function () {
+                for (var j = 0; j < liArr.length; j++) {
+                    liArr[j].className = "";
+                    tableArr[j].classList.add("hide");
+                }
+                this.className = "active";
+                tableArr[this.index].classList.remove("hide");
+            }
+
+        }
+
+
+        // 删除
+        var deleteData = document.querySelector(".delete");
+        var checkboxArr = document.querySelectorAll("#checkbox");
+        var trArr=document.querySelectorAll("tbody tr");
+        deleteData.onclick = function () {
+            var that = this;
+            for (var i = 0; i < checkboxArr.length; i++) {
+                if (checkboxArr[i].checked) {
+                    trArr[i].style.display="none";
+                    var data = checkboxArr[i].dataset['name'];
+                    var productClass= checkboxArr[i].dataset['class'];
+                   
+                    $.post("/deleteProduct", {
+                        "title": data,
+                        "productClass":productClass
+                    }, function (data) {
+                        console.log("lalal");
+                        history.go(0);
+                    });
+                }
+            }
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+        var addData = document.querySelector(".add");
+
+        var productClass = document.querySelector(".class_select select");
+        var productName = document.querySelector(".name_text input");
+        var productImg = document.querySelector(".image_file input");
+        var productPrice = document.querySelector(".price_text input");
+        var productDes = document.querySelector(".des_text input");
+        var productDesImag = document.querySelector(".des_Img input");
+        var addForm = document.querySelector(".add_form");
+
+
+        var yesBtn = document.querySelector(".yes_btn");
+        var obj = new Object();
+        yesBtn.onclick = function () {
+            var formdata = new FormData();
+            formdata.append("productClass", productClass.value);
+            formdata.append("productName", productName.value);
+            formdata.append("productImg", productImg.files[0]);
+            formdata.append("productPrice", productPrice.value);
+            formdata.append("productDes", productDes.value);
+            formdata.append("productDesImag", productDesImag.files[0]);
+
+            var ajax = new XMLHttpRequest();
+            ajax.open("POST", "/addProduct");
+            ajax.send(formdata);
+            ajax.onreadystatechange = function (res) {
+                if (ajax.readyState == 4) {
+                    console.log("ok");
+                    console.log(res);
+                    addForm.style.display = "none";
+                    history.go(0);
+                }
+            }
+
+        }
+
+
+
+
+        
+
+     
+        addData.onclick = function () {
+            addForm.style.display = "block";
+        }
+
+    </script>
+</body>
+
+</html>
